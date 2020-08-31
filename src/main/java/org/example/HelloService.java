@@ -15,29 +15,22 @@
  */
 package org.example;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-
-import org.apache.camel.component.cxf.CxfPayload;
 import org.springframework.stereotype.Service;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
  
 @Path("/sayHello")
 @Service
 public class HelloService {
  
-    @GET
-    @Path("")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String welcome(){return null;}
-    
-    @GET
-    @Path("/test/{a}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String sayHello(@PathParam("a") String a){return null;}
-
     @POST
     @Path("/set")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String set(TestClass input){return null;}
+    public String set(TestClass input){
+        return null;}
 }

@@ -14,8 +14,12 @@ public class RouteTest extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("cxfrs:bean:rsBean")
-                .log("${body}")
-                .setBody(constant("Inter"));
+                .to("log:TEST")
+                .process(exchange -> {
+                    TestClass test = exchange.getIn().getBody(TestClass.class);
+                    System.out.println(test.getVal1());
+                })
+                .setBody(constant("Success"));
     }
 
 

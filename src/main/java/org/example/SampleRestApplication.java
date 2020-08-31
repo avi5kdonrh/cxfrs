@@ -15,6 +15,7 @@
  */
 package org.example;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import org.apache.cxf.Bus;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
@@ -43,7 +44,8 @@ public class SampleRestApplication {
     @Bean
     public Server rsServer() {
         System.out.println("???>>> "+rsBean);
-        return rsBean.getServer();
+        Server server = rsBean.getServer();
+        return server;
     }
 
     @Bean
@@ -53,6 +55,7 @@ public class SampleRestApplication {
         endpoint.setResourceClasses(HelloService.class);
         endpoint.setAddress("/");
         endpoint.setFeatures(Arrays.asList(createOpenApiFeature()));
+        endpoint.setProvider(JacksonJsonProvider.class);
         return endpoint;
     }
     public OpenApiFeature createOpenApiFeature() {

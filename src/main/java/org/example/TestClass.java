@@ -2,15 +2,17 @@ package org.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class TestClass {
  private String val1;
- private int val2;
-
-    public static void main(String[] args) throws Exception{
-        TestClass testClass = new TestClass("List",1);
-        ObjectMapper objectMapper  = new ObjectMapper();
-        objectMapper.writerWithDefaultPrettyPrinter().writeValue(System.out,testClass);
+    private int val2;
+    public TestClass() {
     }
+
+
+
     public TestClass(String val1, int val2) {
         this.val1 = val1;
         this.val2 = val2;
